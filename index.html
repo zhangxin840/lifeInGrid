@@ -2,10 +2,10 @@
 <html>
 	<head>
 		<title>Life in Grid Test</title>
-		<script src="js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 		<!-- Bootstrap -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	</head>
 	<style>
 		body {
@@ -15,10 +15,11 @@
 	</style>
 	<!-- Style Title must be 'lifeInGrid' -->
 	<style title="lifeInGrid">
-		.gridGrid {
+		.lifeGrid {
 			width: 500px;
 			height: 500px;
 			margin: 30px 0;
+			cursor: crosshair;
 		}
 		.lifeBox {
 			/*	width and height will be reseted in JavaScript*/
@@ -48,7 +49,7 @@
 	</style>
 	<body>
 		<div class="container">
-			<div id="grid1" class="gridGrid">
+			<div id="grid1" class="lifeGrid">
 				<div class="lifeBox"></div>
 			</div>
 			<div id="timeMonitor">
@@ -111,6 +112,7 @@
 			}
 			return result;
 		};
+		
 		var initGrid = function(gridName) {
 			var startTime = getTime();
 			var theGrid = $("#" + gridName)[0];
@@ -132,7 +134,8 @@
 
 			console.log("Init: " + (getTime() - startTime));
 		};
-		//Hard code in this function
+		
+		// Hard code in this function
 		function changeStyle(styleTitle, selectorText) {
 			var styleSheets = document.styleSheets
 			var theStyleSheet;
@@ -274,17 +277,16 @@
 				setTimeout(function() {
 					lifeCycle();
 				}, speed);
-
 			}
 		};
 
 		var resetGrid = function() {
-			//Status value
+			// Status value
 			isStarted = false;
 			timeCount = 0;
 			gridData = createGridData(gridSize);
 			population = 0;
-			//UI
+			// UI
 			$("#timeControlButton").html("Start");
 			$("#timeMonitor span").html(0);
 			$("#populationMonitor span").html(0);
@@ -323,8 +325,9 @@
 				x : x,
 				y : y
 			};
-			randomizeData(data1)
-			setGridStatus(data1, position);
+
+			//randomizeData(data1);
+			setGridStatus(randomTransformData(blockLaying1), position);
 		};
 
 		var speedButtonClicked = function() {
@@ -336,7 +339,129 @@
 				throw "Speed button value not valid";
 			}
 		}
+		
+		// Pattern data
 		var data1 = [[0, 1, 0, 1, 1], [1, 0, 1, 0, 1], [0, 0, 1, 1, 0], [0, 1, 1, 0, 0]];
+		var blockLaying1 = [[0, 0, 0, 0, 0, 0, 1, 0], [0, 0, 0, 0, 1, 0, 1, 1], [0, 0, 0, 0, 1, 0, 1, 0], [0, 0, 0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0], [1, 0, 1, 0, 0, 0, 0, 0]];
+		var blockLaying2 = [[1, 1, 1, 0, 1], [1, 0, 0, 0, 0], [0, 0, 0, 1, 1], [0, 1, 1, 0, 1], [1, 0, 1, 0, 1]];
+		var blockLaying3 = [[1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1]];
+
+		var glider = [[1, 0, 1], 
+					   [0, 1, 1], 
+					   [0, 1, 0]];
+
+		var spaceShip = [[0, 1, 1, 1, 1],
+						 [1, 0, 0, 0, 1],
+						 [0, 0, 0, 0, 1],
+					     [1, 0, 0, 1, 0]];
+		
+		var gliderGun = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+					     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0],
+					     [0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
+					     [0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
+					     [1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+					     [1,1,0,0,0,0,0,0,0,0,1,0,0,0,1,0,1,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0],
+					     [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+					     [0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+					     [0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
+
+					     
+		var rPentomino = [[0,1,1],[1,1,0], [0,1,0]];
+		
+		var dieHard = [[0,0,0,0,0,0,1,0],
+					   [1,1,0,0,0,0,0,0],
+					   [0,1,0,0,0,1,1,1]];
+					   
+		var acorn = [[0,1,0,0,0,0,0],
+					   [0,0,0,1,0,0,0],
+					   [1,1,0,0,1,1,1]];
+					   
+		
+		// Direction > 0 if flip vertical
+		var flipData = function(data, direction){
+			var result = [];
+			var temp = 0;
+			var ySize = data.length;
+			var xSize = data[0].length;
+			
+			if(typeof(direction) != 'number'){
+				console.log('flipData: direction not valid');
+				return data;
+			}
+			else if(direction == 0){
+				return data;
+			}
+			
+			if(direction > 0){
+				for (var i = 0; i < ySize; i++) {
+					result[i] = new Array(xSize);
+					for (var j = 0; j < xSize ; j++) {
+						result[i][j] = data[ySize - 1- i][j];
+					}
+				}
+			}
+			else {
+				for (var i = 0; i < ySize; i++) {
+					result[i] = new Array(xSize);
+					for (var j = 0; j < xSize ; j++) {
+						result[i][j] = data[i][xSize - 1 - j];
+					}
+				}
+			}
+			
+			return result;
+		}
+		
+		
+		// Direction > 0 if clockwise direction
+		var rotateData = function(data, direction) {
+			var x = 0;
+			var y = 0;
+			var result = [];
+
+			var ySize = data.length;
+			var xSize = data[0].length;
+
+			if(typeof(direction) != 'number'){
+				console.log('rotateData: direction not valid');
+				return data;
+			}
+			else if(direction == 0){
+				return data;
+			}
+			
+			for (var i = 0; i < xSize; i++) {
+				result[i] = new Array(ySize);
+				for (var j = 0; j < ySize; j++) {
+					result[i][j] = 0;
+				}
+			}
+
+			if (direction < 0) {
+				for (var i = 0; i < xSize; i++) {
+					for (var j = 0; j < ySize; j++) {
+						result[i][j] = data[j][(xSize - 1) - i];
+					}
+				}
+			} else {
+				for (var i = 0; i < xSize; i++) {
+					for (var j = 0; j < ySize; j++) {
+						result[i][j] = data[(ySize - 1) - j][i];
+					}
+				}
+			}
+			
+			if(direction > 1 || direction < -1){
+				if(direction > 1){
+					rotateData(result, (direction - 1));	
+				}
+				else{
+					rotateData(result, (direction + 1));
+				}
+			}
+			
+			return result;
+		};
 
 		var randomizeData = function(data) {
 			for (var i = 0; i < data.length; i++) {
@@ -344,7 +469,21 @@
 					data[i][j] = Math.floor(Math.random() * 2);
 				}
 			}
+		};
+		
+		var randomTransformData = function(data){
+			var direction = Math.floor(Math.random() * 3) - 1; // -1 or 0 or 1
+			var result = [];
+			
+			result = flipData(data, direction);
+			
+			direction = Math.floor(Math.random() * 4); // 0, 1, 2, 3
+			
+			result = rotateData(result, direction)
+			
+			return result;
 		}
+		
 		var position1 = {
 			x : 30,
 			y : 30
