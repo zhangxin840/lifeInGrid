@@ -4,23 +4,203 @@
 		<title>Life in Grid Test</title>
 		<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 		<!-- Bootstrap -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/modern.css" rel="stylesheet">
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	</head>
 	<style>
 		body {
-			background: transparent url(img/shl.png) repeat top left;
+			background: transparent url(img/background.jpg) repeat top left;
 			padding-bottom: 50px;
 		}
 	</style>
 	<!-- Style Title must be 'lifeInGrid' -->
 	<style title="lifeInGrid">
+		body {
+			/*			background-color: #fff;*/
+		}
+		.page {
+			width: 940px;
+			margin: auto;
+			/*			background-color: #fff;*/
+		}
+		.browsers-icons img {
+			float: left;
+			margin-right: 20px;
+		}
+
+		.github-info {
+		}
+
+		#brand-name {
+			line-height: 24px;
+			margin-top: 2px;
+		}
+
+		hr {
+			border: 0;
+			border-bottom: 1px #ddd dotted;
+			color: #ddd;
+			background-color: #ddd;
+		}
+
+		#social {
+			margin-bottom: 90px;
+		}
+		#shareme .box {
+			margin: 5% 8% 0 8%;
+			width: 100%;
+			clear: both;
+		}
+		#shareme .box a {
+			color: #404040;
+			text-shadow: 0 1px 1px rgba(167,167,167,.4);
+		}
+		#shareme .box a:hover {
+			text-decoration: none;
+		}
+		#shareme .count {
+			font-weight: bold;
+			font-size: 50px;
+			float: left;
+			border-right: 2px solid #57b8d1;
+			line-height: 40px;
+			padding-right: 10px
+		}
+		#shareme .share {
+			float: left;
+			margin-left: 10px;
+			font-size: 20px;
+			width: 82px;
+		}
+		#shareme .buttons {
+			position: absolute;
+			width: 294px;
+			background-color: #fff;
+			border: 1px solid rgba(0,0,0,.2);
+			padding: 10px;
+			-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+			-moz-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+			box-shadow: 0 1px 2px rgba(0,0,0,.1);
+			height: 100px;
+		}
+		#shareme .button {
+			float: left;
+			max-width: 50px;
+			min-width: 10px;
+			margin: 0 15px 0 0;
+			background-color: transparent;
+		}
+		#shareme .facebook {
+			margin: 0 4px 0 0;
+		}
+
+		#carousel1 {
+			height: 242px;
+		}
+
+		#sponsorBlock {
+			height: 300px;
+		}
+
+		#page-index .carousel .control {
+			top: auto;
+			left: auto;
+			bottom: -40px;
+		}
+		#page-index .carousel .control.left {
+			right: 100px;
+		}
+		#page-index .carousel .control.right {
+			right: 30px;
+		}
+
+		.charms, .app-bar, .message-dialog, .error-bar, .warning-bar, .info-bar {
+			position: absolute;
+		}
+
+		@media (min-width: 768px) and (max-width: 979px) {
+			.page {
+				width: 724px;
+			}
+			.hero-unit > img {
+				zoom: .6;
+			}
+			.browsers-icons img {
+				zoom: .8;
+			}
+		}
+
+		@media (max-width: 767px) {
+			.page {
+				width: 100%;
+			}
+
+			.hero-unit > img {
+				zoom: .6;
+			}
+
+			.modern-ui-logo {
+				width: 24px;
+				height: 24px;
+			}
+			.github-info {
+				margin-top: 5px;
+			}
+
+			a, .link {
+				font-size: 9pt;
+			}
+
+			h3 {
+				line-height: 11px;
+			}
+
+			.no-mobile {
+				display: none;
+			}
+
+			#carousel1 {
+				height: 300px !important;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.hero-unit img {
+				display: none;
+			}
+
+			#jetbrains {
+				display: none;
+			}
+			#brand-name {
+				display: none;
+			}
+		}
+
+		.cf:before, .cf:after {
+			content: " "; /* 1 */
+			display: table; /* 2 */
+		}
+
+		.cf:after {
+			clear: both;
+		}
+
+		/**
+		 * For IE 6/7 only
+		 * Include this rule to trigger hasLayout and contain floats.
+		 */
+		.cf {
+			*zoom: 1;
+		}
+
 		.lifeGrid {
 			width: 500px;
 			height: 500px;
 			margin: 30px 0;
 			cursor: crosshair;
 		}
+
 		.lifeBox {
 			/*	width and height will be reseted in JavaScript*/
 			width: 1%;
@@ -42,40 +222,41 @@
 		.lifeBox.live {
 			background-color: #62c462;
 		}
+
 		#grid1 {
-			box-shadow: 0px 3px 5px #999;
+			box-shadow: 0px 3px 5px rgba(0,0,0,0.3);
+		}
+		
+		#monitors{
+			display: inline-block;
 		}
 
 	</style>
 	<body>
-		<div class="container">
+		<div class="page">
 			<div id="grid1" class="lifeGrid">
 				<div class="lifeBox"></div>
 			</div>
-			<div id="timeMonitor">
-				<p>
-					Time:<span>0</span>
-				</p>
-			</div>
-			<div id="populationMonitor">
-				<p>
-					Polulation:<span>0</span>
-				</p>
-			</div>
+
+
 			<button id="timeControlButton" class="btn btn-primary" >
 				Start
 			</button>
 			<button id="resetButton" class="btn" >
 				Reset
 			</button>
-			<div class="btn-group speedButtons" data-toggle="buttons-radio">
-				<button type="button" value="slow" class="btn">
+						<div id="monitors">
+				<span id="timeMonitor">Time:<span>0</span></span>
+				<span id="populationMonitor"> Polulation:<span>0</span></span>
+			</div>
+			<div class="button-set speedButtons" data-role="button-set">
+				<button type="button" value="slow">
 					Slow
 				</button>
-				<button type="button" value="normal" class="btn active">
+				<button type="button" value="normal" class="active">
 					Normal
 				</button>
-				<button type="button" value="fast" class="btn">
+				<button type="button" value="fast">
 					Fast
 				</button>
 			</div>
@@ -112,7 +293,7 @@
 			}
 			return result;
 		};
-		
+
 		var initGrid = function(gridName) {
 			var startTime = getTime();
 			var theGrid = $("#" + gridName)[0];
@@ -134,9 +315,9 @@
 
 			console.log("Init: " + (getTime() - startTime));
 		};
-		
+
 		// Hard code in this function
-		function changeStyle(styleTitle, selectorText) {
+		var changeStyle = function(styleTitle, selectorText) {
 			var styleSheets = document.styleSheets
 			var theStyleSheet;
 			var theRules = [];
@@ -163,11 +344,12 @@
 					theRules[n].style.height = (100 / gridSize) + '%';
 				}
 			}
-		}
+		};
 
 		var getTime = function() {
 			return (new Date()).getTime();
 		};
+
 		var generateNextGrid = function() {
 			var nextGridData = [];
 			var temp = [];
@@ -187,8 +369,8 @@
 				nextGridData.push(temp);
 			}
 
-			//If neighbor rows are empty, skip this row
-			//Deal with boarders
+			//  If neighbor rows are empty, skip this row
+			//  Deal with boarders
 			rowSum.push(0);
 			for (var i = 0; i < gridSize; i++) {
 				for (var j = 0; j < gridSize; j++) {
@@ -199,10 +381,10 @@
 				};
 				rowSum.push(gridData[i][j - 1]);
 			}
-			rowSum.push(0);			for (var i = 0; i < gridSize; i++) {
-				if (rowSum[i] === 0 && rowSum[i + 1] === 0 && rowSum[i + 2] === 0) {
-					//console.log("skip " + i);
+			rowSum.push(0);
 
+			for (var i = 0; i < gridSize; i++) {
+				if (rowSum[i] === 0 && rowSum[i + 1] === 0 && rowSum[i + 2] === 0) {
 					continue;
 				}
 
@@ -236,14 +418,12 @@
 			usedTime = getTime() - startTime;
 			console.log(usedTime);
 		};
-		var boxValue;
-		var i;
-		var j;
+
 		var getBoxValue = function(x, y) {
-			boxValue = 0;
-			for ( i = -1; i <= 1; i++) {
+			var boxValue = 0;
+			for (var i = -1; i <= 1; i++) {
 				if ( typeof (gridData[x + i]) !== "undefined") {
-					for ( j = -1; j <= 1; j++) {
+					for (var j = -1; j <= 1; j++) {
 						if ( typeof (gridData[x+i][y + j]) !== "undefined") {
 							boxValue += gridData[x+i][y + j];
 						}
@@ -253,7 +433,8 @@
 			}
 			boxValue -= gridData[x][y]
 			return boxValue;
-		}
+		};
+
 		var startTime = function() {
 			if (!isStarted) {
 				isStarted = true;
@@ -327,7 +508,7 @@
 			};
 
 			//randomizeData(data1);
-			setGridStatus(randomTransformData(blockLaying1), position);
+			setGridStatus(randomTransformData(patterns[pickRandomProperty(patterns)]), position);
 		};
 
 		var speedButtonClicked = function() {
@@ -339,80 +520,62 @@
 				throw "Speed button value not valid";
 			}
 		}
-		
 		// Pattern data
-		var data1 = [[0, 1, 0, 1, 1], [1, 0, 1, 0, 1], [0, 0, 1, 1, 0], [0, 1, 1, 0, 0]];
-		var blockLaying1 = [[0, 0, 0, 0, 0, 0, 1, 0], [0, 0, 0, 0, 1, 0, 1, 1], [0, 0, 0, 0, 1, 0, 1, 0], [0, 0, 0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0], [1, 0, 1, 0, 0, 0, 0, 0]];
-		var blockLaying2 = [[1, 1, 1, 0, 1], [1, 0, 0, 0, 0], [0, 0, 0, 1, 1], [0, 1, 1, 0, 1], [1, 0, 1, 0, 1]];
-		var blockLaying3 = [[1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1]];
+		var patterns = {
+			single : [[1]],
+			randomSeed : [[0, 1, 0, 1, 1], [1, 0, 1, 0, 1], [0, 0, 1, 1, 0], [0, 1, 1, 0, 0]],
+			blockLaying1 : [[0, 0, 0, 0, 0, 0, 1, 0], [0, 0, 0, 0, 1, 0, 1, 1], [0, 0, 0, 0, 1, 0, 1, 0], [0, 0, 0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0], [1, 0, 1, 0, 0, 0, 0, 0]],
+			blockLaying2 : [[1, 1, 1, 0, 1], [1, 0, 0, 0, 0], [0, 0, 0, 1, 1], [0, 1, 1, 0, 1], [1, 0, 1, 0, 1]],
+			blockLaying3 : [[1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1]],
+			glider : [[1, 0, 1], [0, 1, 1], [0, 1, 0]],
+			spaceShip : [[0, 1, 1, 1, 1], [1, 0, 0, 0, 1], [0, 0, 0, 0, 1], [1, 0, 0, 1, 0]],
+			gliderGun : [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1], [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
+			rPentomino : [[0, 1, 1], [1, 1, 0], [0, 1, 0]],
+			dieHard : [[0, 0, 0, 0, 0, 0, 1, 0], [1, 1, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 1, 1, 1]],
+			acorn : [[0, 1, 0, 0, 0, 0, 0], [0, 0, 0, 1, 0, 0, 0], [1, 1, 0, 0, 1, 1, 1]]
+		};
 
-		var glider = [[1, 0, 1], 
-					   [0, 1, 1], 
-					   [0, 1, 0]];
-
-		var spaceShip = [[0, 1, 1, 1, 1],
-						 [1, 0, 0, 0, 1],
-						 [0, 0, 0, 0, 1],
-					     [1, 0, 0, 1, 0]];
-		
-		var gliderGun = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
-					     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0],
-					     [0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
-					     [0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
-					     [1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-					     [1,1,0,0,0,0,0,0,0,0,1,0,0,0,1,0,1,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0],
-					     [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
-					     [0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-					     [0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
-
-					     
-		var rPentomino = [[0,1,1],[1,1,0], [0,1,0]];
-		
-		var dieHard = [[0,0,0,0,0,0,1,0],
-					   [1,1,0,0,0,0,0,0],
-					   [0,1,0,0,0,1,1,1]];
-					   
-		var acorn = [[0,1,0,0,0,0,0],
-					   [0,0,0,1,0,0,0],
-					   [1,1,0,0,1,1,1]];
-					   
-		
+		var pickRandomProperty = function(obj) {
+			var result;
+			var count = 0;
+			for (var prop in obj)
+			if (Math.random() < 1 / ++count)
+				result = prop;
+			return result;
+		}
 		// Direction > 0 if flip vertical
-		var flipData = function(data, direction){
+		var flipData = function(data, direction) {
 			var result = [];
 			var temp = 0;
 			var ySize = data.length;
 			var xSize = data[0].length;
-			
-			if(typeof(direction) != 'number'){
+
+			if ( typeof (direction) != 'number') {
 				console.log('flipData: direction not valid');
 				return data;
-			}
-			else if(direction == 0){
+			} else if (direction == 0) {
 				return data;
 			}
-			
-			if(direction > 0){
+
+			if (direction > 0) {
 				for (var i = 0; i < ySize; i++) {
 					result[i] = new Array(xSize);
-					for (var j = 0; j < xSize ; j++) {
+					for (var j = 0; j < xSize; j++) {
 						result[i][j] = data[ySize - 1- i][j];
 					}
 				}
-			}
-			else {
+			} else {
 				for (var i = 0; i < ySize; i++) {
 					result[i] = new Array(xSize);
-					for (var j = 0; j < xSize ; j++) {
+					for (var j = 0; j < xSize; j++) {
 						result[i][j] = data[i][xSize - 1 - j];
 					}
 				}
 			}
-			
+
 			return result;
-		}
-		
-		
+		};
+
 		// Direction > 0 if clockwise direction
 		var rotateData = function(data, direction) {
 			var x = 0;
@@ -422,14 +585,13 @@
 			var ySize = data.length;
 			var xSize = data[0].length;
 
-			if(typeof(direction) != 'number'){
+			if ( typeof (direction) != 'number') {
 				console.log('rotateData: direction not valid');
 				return data;
-			}
-			else if(direction == 0){
+			} else if (direction == 0) {
 				return data;
 			}
-			
+
 			for (var i = 0; i < xSize; i++) {
 				result[i] = new Array(ySize);
 				for (var j = 0; j < ySize; j++) {
@@ -450,16 +612,15 @@
 					}
 				}
 			}
-			
-			if(direction > 1 || direction < -1){
-				if(direction > 1){
-					rotateData(result, (direction - 1));	
-				}
-				else{
+
+			if (direction > 1 || direction < -1) {
+				if (direction > 1) {
+					rotateData(result, (direction - 1));
+				} else {
 					rotateData(result, (direction + 1));
 				}
 			}
-			
+
 			return result;
 		};
 
@@ -470,27 +631,23 @@
 				}
 			}
 		};
-		
-		var randomTransformData = function(data){
-			var direction = Math.floor(Math.random() * 3) - 1; // -1 or 0 or 1
+
+		var randomTransformData = function(data) {
+			var direction = Math.floor(Math.random() * 3) - 1;
+			// -1 or 0 or 1
 			var result = [];
-			
+
 			result = flipData(data, direction);
-			
-			direction = Math.floor(Math.random() * 4); // 0, 1, 2, 3
-			
+
+			direction = Math.floor(Math.random() * 4);
+			// 0, 1, 2, 3
+
 			result = rotateData(result, direction)
-			
+
 			return result;
 		}
-		
-		var position1 = {
-			x : 30,
-			y : 30
-		};
-
 		var setGridStatus = function(data, position) {
-			//Position is the center of data matrix
+			// Position is the center of data matrix
 			var startX = position.x - Math.floor(data[0].length / 2);
 			var startY = position.y - Math.floor(data.length / 2);
 			var currentX = 0;
@@ -524,5 +681,38 @@
 			$("#resetButton").click(resetButtonClicked);
 			$(".speedButtons button").on('click.lifInGrid', speedButtonClicked);
 		});
+
+		(function($) {
+			$.fn.ButtonSet = function(options) {
+				var defaults = {
+				};
+
+				var $this = $(this), $buttons = $this.find("button");
+
+				var initButtons = function(buttons) {
+					buttons.on('click', function(e) {
+						e.preventDefault();
+						var $a = $(this);
+						if ($a.hasClass('active'))
+							return false;
+						$buttons.removeClass("active");
+						$(this).addClass("active");
+					});
+				}
+
+				return this.each(function() {
+					if (options) {
+						$.extend(defaults, options)
+					}
+
+					initButtons($buttons);
+				});
+			}
+			$(function() {
+				$('[data-role="button-set"]').each(function() {
+					$(this).ButtonSet();
+				})
+			})
+		})(window.jQuery);
 	</script>
 </html>
