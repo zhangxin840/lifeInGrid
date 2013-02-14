@@ -1,180 +1,42 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Life in Grid Test</title>
-		<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-		<!-- Bootstrap -->
-		<link href="css/modern.css" rel="stylesheet">
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<meta charset="utf-8">
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<!-- Mobile viewport optimized: h5bp.com/viewport -->
+		<meta name="viewport" content="width=device-width">
+
+		<title>Life in Grid</title>
+
+		<meta name="robots" content="noindex, nofollow">
+		<meta name="description" content="BootMetro : Simple and complete web UI framework to create web apps with Windows 8 Metro user interface.">
+		<meta name="keywords" content="bootmetro, modern ui, modern-ui, metro, metroui, metro-ui, metro ui, windows 8, metro style, bootstrap, framework, web framework, css, html">
+		<meta name="author" content="AozoraLabs by Marcello Palmitessa">
+
+		<!-- remove or comment this line if you want to use the local fonts -->
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" type="text/css">
+
+		<link rel="stylesheet" type="text/css" href="css/bootmetro-icons.css">
+		<link rel="stylesheet" type="text/css" href="css/bootmetro.css">
+		<link rel="stylesheet" type="text/css" href="css/bootmetro-responsive.css">
+		<link rel="stylesheet" type="text/css" href="css/bootmetro-ui-light.css">
+		<link rel="stylesheet" type="text/css" href="css/metro-ui-dark.css">
+		<!-- Le fav and touch icons -->
+		<link rel="shortcut icon" href="content/ico/favicon.ico">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+
+		<script src="js/modernizr-2.6.1.min.js"></script>
 	</head>
 	<style>
 		body {
-			background: transparent url(img/background.jpg) repeat top left;
-			padding-bottom: 50px;
-		}
-	</style>
-	<!-- Style Title must be 'lifeInGrid' -->
-	<style title="lifeInGrid">
-		body {
-			/*			background-color: #fff;*/
-		}
-		.page {
-			width: 940px;
-			margin: auto;
-			/*			background-color: #fff;*/
-		}
-		.browsers-icons img {
-			float: left;
-			margin-right: 20px;
-		}
-
-		.github-info {
-		}
-
-		#brand-name {
-			line-height: 24px;
-			margin-top: 2px;
-		}
-
-		hr {
-			border: 0;
-			border-bottom: 1px #ddd dotted;
-			color: #ddd;
-			background-color: #ddd;
-		}
-
-		#social {
-			margin-bottom: 90px;
-		}
-		#shareme .box {
-			margin: 5% 8% 0 8%;
-			width: 100%;
-			clear: both;
-		}
-		#shareme .box a {
-			color: #404040;
-			text-shadow: 0 1px 1px rgba(167,167,167,.4);
-		}
-		#shareme .box a:hover {
-			text-decoration: none;
-		}
-		#shareme .count {
-			font-weight: bold;
-			font-size: 50px;
-			float: left;
-			border-right: 2px solid #57b8d1;
-			line-height: 40px;
-			padding-right: 10px
-		}
-		#shareme .share {
-			float: left;
-			margin-left: 10px;
-			font-size: 20px;
-			width: 82px;
-		}
-		#shareme .buttons {
-			position: absolute;
-			width: 294px;
-			background-color: #fff;
-			border: 1px solid rgba(0,0,0,.2);
-			padding: 10px;
-			-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
-			-moz-box-shadow: 0 1px 2px rgba(0,0,0,.1);
-			box-shadow: 0 1px 2px rgba(0,0,0,.1);
-			height: 100px;
-		}
-		#shareme .button {
-			float: left;
-			max-width: 50px;
-			min-width: 10px;
-			margin: 0 15px 0 0;
-			background-color: transparent;
-		}
-		#shareme .facebook {
-			margin: 0 4px 0 0;
-		}
-
-		#carousel1 {
-			height: 242px;
-		}
-
-		#sponsorBlock {
-			height: 300px;
-		}
-
-		#page-index .carousel .control {
-			top: auto;
-			left: auto;
-			bottom: -40px;
-		}
-		#page-index .carousel .control.left {
-			right: 100px;
-		}
-		#page-index .carousel .control.right {
-			right: 30px;
-		}
-
-		.charms, .app-bar, .message-dialog, .error-bar, .warning-bar, .info-bar {
-			position: absolute;
-		}
-
-		@media (min-width: 768px) and (max-width: 979px) {
-			.page {
-				width: 724px;
-			}
-			.hero-unit > img {
-				zoom: .6;
-			}
-			.browsers-icons img {
-				zoom: .8;
-			}
-		}
-
-		@media (max-width: 767px) {
-			.page {
-				width: 100%;
-			}
-
-			.hero-unit > img {
-				zoom: .6;
-			}
-
-			.modern-ui-logo {
-				width: 24px;
-				height: 24px;
-			}
-			.github-info {
-				margin-top: 5px;
-			}
-
-			a, .link {
-				font-size: 9pt;
-			}
-
-			h3 {
-				line-height: 11px;
-			}
-
-			.no-mobile {
-				display: none;
-			}
-
-			#carousel1 {
-				height: 300px !important;
-			}
-		}
-
-		@media (max-width: 480px) {
-			.hero-unit img {
-				display: none;
-			}
-
-			#jetbrains {
-				display: none;
-			}
-			#brand-name {
-				display: none;
-			}
+			/*background: transparent url(img/shl.png) repeat top left;
+			 background-color: #fff;
+			 padding-bottom: 50px;*/
+			padding-bottem: 10px;
 		}
 
 		.cf:before, .cf:after {
@@ -193,7 +55,9 @@
 		.cf {
 			*zoom: 1;
 		}
-
+	</style>
+	<!-- Style Title must be 'lifeInGrid' -->
+	<style title="lifeInGrid">
 		.lifeGrid {
 			width: 500px;
 			height: 500px;
@@ -226,42 +90,63 @@
 		#grid1 {
 			box-shadow: 0px 3px 5px rgba(0,0,0,0.3);
 		}
-		
-		#monitors{
+
+		#monitors {
 			display: inline-block;
 		}
 
+		#gridControls {
+			height: 200px;
+		}
 	</style>
 	<body>
-		<div class="page">
+		<div class="container">
+			<div class="page-header">
+				<h1>Life in Grid</h1>
+			</div>
 			<div id="grid1" class="lifeGrid">
 				<div class="lifeBox"></div>
 			</div>
+			<div id="gridControls" class="cf">
+				<button id="timeControlButton" class="btn btn-large btn-primary" type="button">
+					Start
+				</button>
+				<button id="resetButton" class="btn" type="button">
+					Reset
+				</button>
+				<div class="btn-group">
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> Action <span class="caret"></span> </a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#" class="speedButton"  value="slow">Slow</a>
+						</li>
+						<li>
+							<a href="#" class="speedButton"  value="normal">Normal</a>
+						</li>
+						<li>
+							<a href="#" class="speedButton"  value="fast">Fast</a>
+						</li>
+					</ul>
+				</div>
+				<div id="monitors">
+					<span id="timeMonitor">Time:<span>0</span></span>
+					<span id="populationMonitor"> Polulation:<span>0</span></span>
+				</div>
 
-
-			<button id="timeControlButton" class="btn btn-primary" >
-				Start
-			</button>
-			<button id="resetButton" class="btn" >
-				Reset
-			</button>
-						<div id="monitors">
-				<span id="timeMonitor">Time:<span>0</span></span>
-				<span id="populationMonitor"> Polulation:<span>0</span></span>
-			</div>
-			<div class="button-set speedButtons" data-role="button-set">
-				<button type="button" value="slow">
-					Slow
-				</button>
-				<button type="button" value="normal" class="active">
-					Normal
-				</button>
-				<button type="button" value="fast">
-					Fast
-				</button>
 			</div>
 		</div>
 
+		<script src="js/jquery-1.8.2.min.js"></script>
+
+		<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+		<script type="text/javascript" src="js/jquery.scrollTo.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/bootmetro.js"></script>
+		<script type="text/javascript" src="js/bootmetro-charms.js"></script>
+
+		<script type="text/javascript">
+			$(".metro").metro();
+		</script>
 	</body>
 	<script type="text/javascript">
 		var gridData = [];
@@ -679,7 +564,7 @@
 			initGrid("grid1");
 			$("#timeControlButton").click(timeControlButtonClicked);
 			$("#resetButton").click(resetButtonClicked);
-			$(".speedButtons button").on('click.lifInGrid', speedButtonClicked);
+			$(".speedButton").on('click.lifInGrid', speedButtonClicked);
 		});
 
 		(function($) {
